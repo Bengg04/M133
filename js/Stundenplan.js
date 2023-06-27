@@ -8,9 +8,20 @@ $(document).ready(function () {
             let option = "<option value='" + group.beruf_id + "'>" + group.beruf_name + "</option>"
             groupDropdown.insertAdjacentHTML("beforeend", option)
         })
+
+        if (localStorage.getItem("groupDropdown") != null) {
+            loadClass(localStorage.getItem("groupDropdown"))
+            $("#groupDropdown").val(localStorage.getItem("groupDropdown"))
+        }
     })
 
     groupDropdown.addEventListener("change", function () {
+        let selectedGroup = groupDropdown.value;
+        localStorage.setItem("groupDropdown", selectedGroup);
+        loadClass(selectedGroup)
+    })
+
+    function loadClass(selectedValue) {
         let selectedGroup = groupDropdown.value;
 
         $.getJSON("http://sandbox.gibm.ch/klassen.php?beruf_id=" + selectedGroup).done(function (data) {
@@ -19,10 +30,20 @@ $(document).ready(function () {
                 classDropdown.insertAdjacentHTML("beforeend", option);
             })
         })
-    })
+
+        if (localStorage.getItem("classDropdown") != null) {
+            loadClass(localStorage.getItem("classDropdown"))
+            $("#groupDropdown").val(localStorage.getItem("classDropdown"))
+        }
+    }
 
     classDropdown.addEventListener("change", function () {
         let selectedClass = classDropdown.value;
+        localStorage.setItem("classDropdown", selectedClass);
+        loadTable(selectedClass)
+    })
+
+    function loadTable(selectedClass) {
         let  wochentag = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
         let tableHead = "<table class='table'><tr><th>Datum</th><th>Wochentag</th><th>Von</th><th>Bis</th><th>Lehrer</th><th>Fach</th><th>Raum</th></tr>"
 
@@ -34,6 +55,5 @@ $(document).ready(function () {
             tableHead += "</table>"
             document.getElementById("outputDiv").innerHTML = tableHead
         })
-
-    })
+    }
 })
