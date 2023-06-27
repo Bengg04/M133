@@ -6,25 +6,27 @@
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="js/Stundenplan.js" defer></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     <h1>BBZBL Stundenplan</h1>
 
     <label for="groupDropdown">Berufsgruppe</label> <br>
-    <select id="groupDropdown">
+    <select id="groupDropdown" class="form-select">
         <option value="">Bitte wählen</option>
     </select>
 
     <br><br>
 
     <label for="classDropdown">Klassenauswahlt</label> <br>
-    <select id="classDropdown">
+    <select id="classDropdown" class="form-select">
         <option value="">Bitte wählen</option>
     </select>
 
     <br><br>
 
     <input type="date" id="chooseWeek" placeholder="Wähle eine Woche">
-    <div id="outputDiv"></div>
+    <div id="outputDiv" class="table-responsive"></div>
 </body>
 </html>

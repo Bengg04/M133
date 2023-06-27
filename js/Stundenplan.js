@@ -24,7 +24,7 @@ $(document).ready(function () {
     classDropdown.addEventListener("change", function () {
         let selectedClass = classDropdown.value;
         let  wochentag = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
-        let tableHead = "<table><tr><th>Datum</th><th>Wochentag</th><th>Von</th><th>Bis</th><th>Lehrer</th><th>Fach</th><th>Raum</th></tr>"
+        let tableHead = "<table class='table'><tr><th>Datum</th><th>Wochentag</th><th>Von</th><th>Bis</th><th>Lehrer</th><th>Fach</th><th>Raum</th></tr>"
 
         $.getJSON("http://sandbox.gibm.ch/tafel.php?klasse_id=" + selectedClass).done(function (data) {
             $.each(data, function (index, lession) {
