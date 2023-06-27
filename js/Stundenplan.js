@@ -20,4 +20,12 @@ $(document).ready(function () {
             })
         })
     })
+
+    classDropdown.addEventListener("change", function () {
+        let selectedClass = classDropdown.value;
+
+        $.getJSON("http://sandbox.gibm.ch/tafel.php?klasse_id=" + selectedClass).done(function (data) {
+            console.log(data);
+        })
+    })
 })
